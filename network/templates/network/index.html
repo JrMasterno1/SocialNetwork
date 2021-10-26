@@ -1,0 +1,77 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+    <div id="post-status">
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <b><label for="textarea">Write something here</label></b>
+            </div>
+            <textarea id="mytext" placeholder="What are you thinking ?" name="content" rows="4" cols="100"></textarea>
+            <div>
+                <input id="submit" type="submit" value="Post">
+            </div>
+        </form>
+    </div>
+{% endif %}
+<div id="status-view">
+    {% for post in page_obj %}
+        <div class="user" id="u-{{post.id}}">
+            <a href="{% url 'user' post.user.id %}"><b class="username">{{post.user}}</b></a>
+            <div class="content">
+                {{post.content}}
+            </div>
+            {% if user.is_authenticated %}
+            <div>
+                <span class="thumbs">
+                    {% if post in liked %}
+                        <i style="font-size: 30px;" class="fa fa-thumbs-up" id="like-{{post.id}}">{{post.like}}</i>
+                    {% else %}
+                        <i style="font-size: 30px;" class="fa fa-thumbs-up fa-thumbs-down" id="like-{{post.id}}">{{post.like}}</i>
+                    {% endif %}
+                </span>
+                <span>
+                    <span class="Comment" id="Comment-{{post.id}}">Comment</span>
+                    <div style="display: none;">
+                        <p>Comments and suggestions:<br><textarea name="comments" rows="3" cols="30"></textarea><br><br>
+                        <input type="submit" name="sub" value="Send"></p>
+                        {% for comment in comments %}
+                            {% if comment.post.id == post.id%}
+                                <div class="comment-box">
+                                    <div class="user-comment">{{request.user.username}}</div><div class="new-comment">{{comment.content}}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </span>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+        {% endif %}
+    </ul>
+  </nav>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
+</style>
+{% endblock %}

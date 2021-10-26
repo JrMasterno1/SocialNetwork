@@ -1,0 +1,124 @@
+#post-status {
+    padding: 20px;
+    box-sizing: border-box;
+    border: 10px;
+    margin: 10px;
+    border: black;
+    border-style: solid;
+    background-color: ghostwhite;
+}
+
+.thumbs {
+  font-size: 20px;
+  background-color: antiquewhite;
+  border-radius: 10%;
+  padding: 10px;
+}
+.Comment {
+  font-size: 20px;
+  margin-left: 10px;
+  background-color: antiquewhite;
+  padding: 10px;
+  border-radius: 10%;
+}
+.user-comment {
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.new-comment {
+  color: black;
+  margin-left: 20px;
+  font-size: 30px;
+}
+.comment-box {
+  background-color:silver;
+  border: lightslategrey;
+  border-style: solid;
+  margin: 20px;
+  border-radius: 10px;
+}
+#submit {
+  background-color: blue;
+  color: white;
+  width: 60px;
+}
+#submit:hover {
+  background-color: black;
+  color: white;
+}
+.user {
+  color: cornflowerblue;
+  background-color: floralwhite;
+  padding: 10px;
+  margin: 20px;
+  border: black;
+  border-style: solid;
+  border-radius: 10px;
+}
+.Comment:hover {
+  color: blue;
+}
+.username {
+  color: navy;
+}
+.content {
+  font-size: 50px;
+  padding: 10px;
+  color: black;
+}
+#status-view {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    font-family: arial;
+    width: 60%;
+    height: 50%;
+    max-width: 60%;
+    max-height: 50%;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+  .pagination {
+    display: flex;
+    margin: auto;
+    margin-left: 30%;
+    margin-bottom: 10px;
+  }
+  .page-link {
+    padding: 10px;
+  }
